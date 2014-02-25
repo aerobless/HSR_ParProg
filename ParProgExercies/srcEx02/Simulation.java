@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+//Test for part 1 of Exercise 3
 class BoundedBuffer<T> {
 	int boundCapacity=0;
 	ArrayList<T> bufferList = new ArrayList<T>();
@@ -22,7 +23,6 @@ class BoundedBuffer<T> {
 				anEx.printStackTrace();
 			}
 		}
-		boundCapacity++;
 		bufferList.add(item);
 		notifyAll();
 	}
@@ -37,12 +37,13 @@ class BoundedBuffer<T> {
 				anEx.printStackTrace();
 			}
 		}
-		T returnObject = bufferList.get(0);
-		bufferList.remove(0);
+		T returnObject = bufferList.remove(0);
 		notifyAll();
 		return returnObject;
 	}
 }
+
+//Test for part
 
 class Producer extends Thread {
 	private final BoundedBuffer<Long> buffer;
