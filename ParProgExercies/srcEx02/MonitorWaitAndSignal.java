@@ -55,6 +55,7 @@ public class MonitorWaitAndSignal {
 		// TODO Auto-generated method stub
 		Room<Person> test = new Room<Person>();
 		Person loler = new Person();
+		loler.run();
 		test.enter(loler);
 	}
 }
