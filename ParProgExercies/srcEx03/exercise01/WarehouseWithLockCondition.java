@@ -24,6 +24,7 @@ public class WarehouseWithLockCondition implements Warehouse {
 		try {
 			while (wares+amount > totalCapacity){ notFull.await();}
 			wares = wares+amount;
+			//Notifies our getter that it can try getting stuff again.
 			notEmpty.signal();
 		} finally {
 			monitor.unlock();
@@ -37,6 +38,7 @@ public class WarehouseWithLockCondition implements Warehouse {
 			//bug-fixed: 0 is okay too, otherwise we'd get stuck!
 			while(wares-amount < 0) { notEmpty.await();}
 			wares = wares-amount;
+			//Notifies our putter that it can try putting stuff again.
 			notFull.signal();
 		} finally { monitor.unlock();}
 	}
