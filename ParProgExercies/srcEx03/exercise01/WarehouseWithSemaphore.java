@@ -30,7 +30,6 @@ public class WarehouseWithSemaphore implements Warehouse {
 	  mutex.release();
 	  //Note2Self: We have to release an amount instead of just one permit!
 	  lowerLimit.release(amount);
-	  System.out.println("put: "+wares);
   }
 
   @Override
@@ -42,6 +41,5 @@ public class WarehouseWithSemaphore implements Warehouse {
 	  mutex.release();
 	  //Note2Self: We have to acquire an amount instead of just one permit!
 	  upperLimit.release(amount);
-	  System.out.println("get: "+wares);
   }
 }
