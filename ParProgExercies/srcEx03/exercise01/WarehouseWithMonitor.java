@@ -1,19 +1,24 @@
 package exercise01;
 
 public class WarehouseWithMonitor implements Warehouse {
-  //TODO
+	int totalWareCapacity = 0;
+	int wareCapacity = 0;
   
   public WarehouseWithMonitor(int capacity) {
-    // TODO
+	  totalWareCapacity = capacity;
   }
   
   @Override
-  public void put(int amount) throws InterruptedException {
-    // TODO
+  public synchronized void put(int amount) throws InterruptedException {
+	  while(totalWareCapacity<(amount+wareCapacity)){ wait(); }
+	  wareCapacity = wareCapacity+amount;
+	  notifyAll();
   }
 
   @Override
-  public void get(int amount) throws InterruptedException {
-    // TODO
+  public synchronized void get(int amount) throws InterruptedException {
+	  while(wareCapacity<(amount)){ wait(); }
+	  wareCapacity = wareCapacity-amount;
+	  notifyAll();
   }
 }
