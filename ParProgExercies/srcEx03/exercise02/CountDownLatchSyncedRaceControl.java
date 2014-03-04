@@ -38,7 +38,6 @@ public class CountDownLatchSyncedRaceControl extends AbstractRaceControl {
 	protected void waitForFinishing() throws InterruptedException {
 		// TODO Auto-generated method stub
 		raceOver.await();
-		
 	}
 
 	@Override
@@ -54,14 +53,12 @@ public class CountDownLatchSyncedRaceControl extends AbstractRaceControl {
 	public void passFinishLine() {
 		// TODO Auto-generated method stub
 		raceOver.countDown();
-		waitingForLapOfHonor.countDown();
-		
+		waitingForLapOfHonor.countDown();	
 	}
 
 	@Override
 	public void waitForLapOfHonor() throws InterruptedException {
 		waitingForLapOfHonor.await();
-		
 	}
 
 }
