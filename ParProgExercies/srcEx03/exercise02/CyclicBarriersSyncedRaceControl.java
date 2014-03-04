@@ -4,15 +4,20 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarriersSyncedRaceControl extends AbstractRaceControl {
-	CyclicBarrier carsReady = new CyclicBarrier(NOF_RACE_CARS);
-	CyclicBarrier raceStarted = new CyclicBarrier(NOF_RACE_CARS);
-	CyclicBarrier raceOver = new CyclicBarrier(NOF_RACE_CARS);
+	CyclicBarrier carsReady = new CyclicBarrier(NOF_RACE_CARS+1);
+	CyclicBarrier raceStarted = new CyclicBarrier(NOF_RACE_CARS+1);
+	CyclicBarrier raceOver = new CyclicBarrier(NOF_RACE_CARS+1);
 	CyclicBarrier waitingForLapOfHonor = new CyclicBarrier(NOF_RACE_CARS);
 
 
 	@Override
 	protected void waitForAllToBeReady() throws InterruptedException {
-
+		try {
+			carsReady.await();
+		} catch (BrokenBarrierException anEx) {
+			// TODO Auto-generated catch block
+			anEx.printStackTrace();
+		}
 	}
 
 	@Override
@@ -39,19 +44,27 @@ public class CyclicBarriersSyncedRaceControl extends AbstractRaceControl {
 			// TODO Auto-generated catch block
 			anEx.printStackTrace();
 		}
-		
 	}
 
 	@Override
 	public void waitForStartSignal() throws InterruptedException {
-		
+		try {
+			raceStarted.await();
+		} catch (BrokenBarrierException anEx) {
+			// TODO Auto-generated catch block
+			anEx.printStackTrace();
+		}
 	}
 
 	@Override
 	protected void waitForFinishing() throws InterruptedException {
 		// TODO Auto-generated method stub
-
-		
+		try {
+			raceOver.await();
+		} catch (BrokenBarrierException anEx) {
+			// TODO Auto-generated catch block
+			anEx.printStackTrace();
+		}	
 	}
 
 	@Override
@@ -76,7 +89,6 @@ public class CyclicBarriersSyncedRaceControl extends AbstractRaceControl {
 			// TODO Auto-generated catch block
 			anEx.printStackTrace();
 		}
-		
 	}
 
 	@Override
@@ -89,5 +101,4 @@ public class CyclicBarriersSyncedRaceControl extends AbstractRaceControl {
 			anEx.printStackTrace();
 		}
 	}
-
 }
