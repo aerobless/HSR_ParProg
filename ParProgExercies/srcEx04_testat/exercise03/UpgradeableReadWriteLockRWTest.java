@@ -1,39 +1,40 @@
 package exercise03;
 
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class UpgradeableReadWriteLock {
-	Semaphore mutex = new Semaphore(1, true);
+public class UpgradeableReadWriteLockRWTest {
+	private ReadWriteLock rwLock = new ReentrantReadWriteLock(true);
 	// TODO: Implement
 
 	public void readLock() throws InterruptedException {
-		mutex.acquire();
+		rwLock.readLock().lock();
 		// TODO:
 		
 	}
 
 	public void readUnlock() {
-		mutex.release();
+		rwLock.readLock().unlock();
 		// TODO:
 	}
 
 	public void upgradeableReadLock() throws InterruptedException {
-		mutex.acquire();
+		rwLock.writeLock().lock();
 		// TODO:
 	}
 
 	public void upgradeableReadUnlock() {
-		mutex.release();
+		rwLock.writeLock().unlock();
 		// TODO:
 	}
 
 	public void writeLock() throws InterruptedException {
-		mutex.acquire();
+		rwLock.writeLock().lock();
 		// TODO:
 	}
 
 	public void writeUnlock() {
-		mutex.release();
+		rwLock.writeLock().unlock();
 		// TODO:
 	}
 }
