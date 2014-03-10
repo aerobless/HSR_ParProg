@@ -58,6 +58,7 @@ class Philosopher extends Thread {
 		while (true) {
 			try {
 				think();
+				System.out.println("trying to take forks");
 				takeForks();
 				eat();
 				putForks();

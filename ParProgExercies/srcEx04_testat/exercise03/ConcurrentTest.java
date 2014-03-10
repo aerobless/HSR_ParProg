@@ -2,6 +2,9 @@ package exercise03;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.junit.After;
+import org.junit.Before;
+
 public class ConcurrentTest {
 	private static final int TIMEOUT = 1000;
 
