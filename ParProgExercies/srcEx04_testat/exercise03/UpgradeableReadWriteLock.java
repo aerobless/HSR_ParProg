@@ -2,23 +2,25 @@ package exercise03;
 
 import java.util.concurrent.Semaphore;
 
-
 public class UpgradeableReadWriteLock {
-	private Semaphore read = new Semaphore(0);
-	private Semaphore write = new Semaphore(0);
-	private Semaphore writeRequest = new Semaphore(0);
-	
+	Semaphore writeLock = new Semaphore(1, false);
+	Semaphore readLock = new Semaphore(1, false);
+	//Semaphore upgradeLock = new Semaphore(1, false);
 
 	public synchronized void readLock() throws InterruptedException {
-		while(write.availablePermits() > 0 || writeRequest.availablePermits() > 0){
+		while(writeLock.availablePermits()!=1){
 			wait();
 		}
-		read.acquire();
+			if(readLock.availablePermits()>0){
+				readLock.acquire();
+			}
 	}
 
 	public synchronized void readUnlock() {
-		read.release();
-		notifyAll();
+		if(readLock.availablePermits()==0){
+			readLock.release();
+			notifyAll();
+		}
 	}
 
 	public void upgradeableReadLock() throws InterruptedException {
@@ -30,18 +32,15 @@ public class UpgradeableReadWriteLock {
 	}
 
 	public synchronized void writeLock() throws InterruptedException {
-		writeRequest.acquire();
-		
-		while(read.availablePermits() > 0 || write.availablePermits() > 0){
+		while(readLock.availablePermits()==0 || writeLock.availablePermits()==0){
 			wait();
 		}
-		writeRequest.release();
-		write.acquire();
-
+		writeLock.acquire();
 	}
 
 	public synchronized void writeUnlock() {
-		write.release();
-		notifyAll();
+			writeLock.release();	
+			notifyAll();
 	}
 }
+
