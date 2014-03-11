@@ -39,13 +39,31 @@ class Philosopher extends Thread {
 		sleep((int) (Math.random() * 1000));
 	}
 
+	/**
+	 * The forks are numbered 1 through 5 because of the semaphore array.
+	 * Now each philosopher will always pick up the fork with the lower number
+	 * first. After that he'll try to take the fork with the higher number.
+	 * So in the worst case, if 4 philosophers try to pick up the lower numbered
+	 * forks at the same time, the highest numbered fork will remain on the table.
+	 * So the fifth philosopher can't pick up a fork and we cannot achieve a
+	 * dead-lock state.
+	 *
+	 * @throws InterruptedException
+	 */
 	private void takeForks() throws InterruptedException {
 		philoState = PhiloState.hungry;
 		table.notifyStateChange(this);
 		// try to get the forks
-		table.acquireFork(table.leftForkNumber(id));
-		sleep(500);
-		table.acquireFork(table.rightForkNumber(id));
+		if(table.leftForkNumber(id)>table.rightForkNumber(id)){
+			table.acquireFork(table.rightForkNumber(id));
+			sleep(500);
+			table.acquireFork(table.leftForkNumber(id));
+		}
+		else{
+			table.acquireFork(table.leftForkNumber(id));
+			sleep(500);
+			table.acquireFork(table.rightForkNumber(id));
+		}
 	}
 
 	private void putForks() {

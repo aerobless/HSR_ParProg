@@ -18,9 +18,11 @@ public class BrokenCyclicLatch {
 			System.out.println("Thread: "+threadId+" go");
 			/**
 			 * Ex1 - Theory:
-			 * Thread 0 triggers the creation of a new latch. If thread 0 manages to
-			 * overtake a thread it locks that thread out. However everyone waits on that
-			 * Thread for the next round, so we end up with a deadlock.
+			 * Thread 0 triggers the creation of a new latch. If the other threads manage
+			 * to overtake the first thread they'll wait on the wrong latch while thread 1
+			 * waits on them to reach his latch --> Deadlock
+			 * 
+			 * so tdlr: if thread 0 isn't first we have a problem
 			 */
 			if (threadId == 0) { 
 				latch = new CountDownLatch(NOF_THREADS); // new latch for new round
