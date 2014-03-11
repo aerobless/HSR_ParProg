@@ -51,8 +51,7 @@ class Philosopher extends Thread {
 		 * Ex2b - Theory:
 		 * The philosophers can no longer deadlock because of the re-try
 		 * sequence, however it's still possible that a philosopher starves
-		 * to death because he never gets a chance to eat. E.g. he runs into
-		 * re-try's all the time because of his bad luck.
+		 * to death because he never gets a chance to eat. --> FAIRNESS
 		 */
 		table.acquireFork(leftForkNo);
 		while (!table.tryAcquireFork(rightForkNo)) {
