@@ -2,38 +2,46 @@ package exercise03;
 
 import java.util.concurrent.Semaphore;
 
-public class UpgradeableReadWriteLock {
-	Semaphore mutex = new Semaphore(1, true);
-	// TODO: Implement
 
-	public void readLock() throws InterruptedException {
-		mutex.acquire();
-		// TODO:
-		
+public class UpgradeableReadWriteLock {
+	private Semaphore read = new Semaphore(0);
+	private Semaphore write = new Semaphore(0);
+	private Semaphore writeRequest = new Semaphore(0);
+	
+
+	public synchronized void readLock() throws InterruptedException {
+		while(write.availablePermits() > 0 || writeRequest.availablePermits() > 0){
+			wait();
+		}
+		read.acquire();
 	}
 
-	public void readUnlock() {
-		mutex.release();
-		// TODO:
+	public synchronized void readUnlock() {
+		read.release();
+		notifyAll();
 	}
 
 	public void upgradeableReadLock() throws InterruptedException {
-		mutex.acquire();
-		// TODO:
+
 	}
 
 	public void upgradeableReadUnlock() {
-		mutex.release();
-		// TODO:
+
 	}
 
-	public void writeLock() throws InterruptedException {
-		mutex.acquire();
-		// TODO:
+	public synchronized void writeLock() throws InterruptedException {
+		writeRequest.acquire();
+		
+		while(read.availablePermits() > 0 || write.availablePermits() > 0){
+			wait();
+		}
+		writeRequest.release();
+		write.acquire();
+
 	}
 
-	public void writeUnlock() {
-		mutex.release();
-		// TODO:
+	public synchronized void writeUnlock() {
+		write.release();
+		notifyAll();
 	}
 }
