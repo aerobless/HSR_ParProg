@@ -1,46 +1,73 @@
 package exercise03;
 
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
 public class UpgradeableReadWriteLock {
+	Semaphore upgrader = new Semaphore(1, false);
 	Semaphore writeLock = new Semaphore(1, false);
-	Semaphore readLock = new Semaphore(1, false);
-	//Semaphore upgradeLock = new Semaphore(1, false);
+	ArrayList<Semaphore> readerList = new ArrayList<Semaphore>();
 
 	public synchronized void readLock() throws InterruptedException {
+		System.out.println("Read lock");
 		while(writeLock.availablePermits()!=1){
 			wait();
 		}
-			if(readLock.availablePermits()>0){
-				readLock.acquire();
-			}
+		Semaphore reader = new Semaphore(1, false);
+		reader.acquire();
+		readerList.add(reader);
 	}
 
 	public synchronized void readUnlock() {
-		if(readLock.availablePermits()==0){
-			readLock.release();
-			notifyAll();
-		}
+		System.out.println("Read Unlock");
+		Semaphore reader = readerList.remove(readerList.size()-1);
+		reader.release();
+		notifyAll();
 	}
 
-	public void upgradeableReadLock() throws InterruptedException {
-
+	//LOCK
+	public synchronized void upgradeableReadLock() throws InterruptedException {
+		System.out.println("upgradeableReadLock");
+		readLock();
+		upgrader.acquire();
 	}
 
+	//UNLOCK
 	public void upgradeableReadUnlock() {
-
+		System.out.println("upgradeableReadUnlock");
+		upgrader.release();
+		readUnlock();
 	}
 
 	public synchronized void writeLock() throws InterruptedException {
-		while(readLock.availablePermits()==0 || writeLock.availablePermits()==0){
-			wait();
+		System.out.println("writeLock");
+		if(upgrader.availablePermits()==0){
+			//TODO: release read
+			while(readerList.size()>0 || writeLock.availablePermits()==0){
+				wait();
+			}
+			writeLock.acquire();
 		}
-		writeLock.acquire();
+		else{
+			while(readerList.size()>0 || writeLock.availablePermits()==0){
+				wait();
+			}
+			writeLock.acquire();
+		}
 	}
 
-	public synchronized void writeUnlock() {
+	public synchronized void writeUnlock() throws InterruptedException {
+		System.out.println("writeUnlock");
+		if(upgrader.availablePermits()==0){
+			//TODO: acquire read
+			writeLock.release();	
+			readLock();
+			notifyAll();
+		}
+		else{
 			writeLock.release();	
 			notifyAll();
+		}
 	}
 }
 
