@@ -25,14 +25,12 @@ public class UpgradeableReadWriteLock {
 		notifyAll();
 	}
 
-	//LOCK
 	public synchronized void upgradeableReadLock() throws InterruptedException {
 		System.out.println("upgradeableReadLock");
 		readLock();
 		upgrader.acquire();
 	}
 
-	//UNLOCK
 	public void upgradeableReadUnlock() {
 		System.out.println("upgradeableReadUnlock");
 		upgrader.release();
@@ -42,7 +40,6 @@ public class UpgradeableReadWriteLock {
 	public synchronized void writeLock() throws InterruptedException {
 		System.out.println("writeLock");
 		if(upgrader.availablePermits()==0){
-			//TODO: release read
 			while(readerList.size()>0 || writeLock.availablePermits()==0){
 				wait();
 			}
@@ -59,7 +56,6 @@ public class UpgradeableReadWriteLock {
 	public synchronized void writeUnlock() throws InterruptedException {
 		System.out.println("writeUnlock");
 		if(upgrader.availablePermits()==0){
-			//TODO: acquire read
 			writeLock.release();	
 			readLock();
 			notifyAll();
