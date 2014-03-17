@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-
 public class ReadWriteLockTest extends ConcurrentTest {
 	private static final int TIMEOUT = 1000;
 	
