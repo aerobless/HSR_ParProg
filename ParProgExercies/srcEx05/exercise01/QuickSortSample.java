@@ -1,12 +1,11 @@
 package exercise01;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveTask;
 
 public class QuickSortSample {
 	private static final int NOF_ELEMENTS = 10_000_000;
@@ -14,29 +13,11 @@ public class QuickSortSample {
 	public static void main(String[] args) {
 		int[] numberArray = createRandomArray(NOF_ELEMENTS);
 		//Setting up Thread-pool before string to measure:
-		ExecutorService threadPool = Executors.newFixedThreadPool(2);
-		Future<int[]> future1;
-		Future<int[]> future2;
+		ForkJoinPool threadPool = new ForkJoinPool();
+
+		int[] sortedArrayResult = threadPool.invoke(new QuickSortWorker(numberArray));
 		
-		int[] firstHalf = Arrays.copyOfRange(numberArray, 0, numberArray.length/2);
-		int[] secondHalf = Arrays.copyOfRange(numberArray, numberArray.length/2, numberArray.length);
 		
-		future1 = threadPool.submit(new QuickSortWorker(firstHalf));
-		future2 = threadPool.submit(new QuickSortWorker(secondHalf));
-		
-		try {
-			int[] result1 = future1.get();
-			int[] result2 = future2.get();
-			checkSorted(result1);
-			checkSorted(result2);
-			System.out.println("good");
-		} catch (InterruptedException anEx) {
-			// TODO Auto-generated catch block
-			anEx.printStackTrace();
-		} catch (ExecutionException anEx) {
-			// TODO Auto-generated catch block
-			anEx.printStackTrace();
-		} 
 		
 		threadPool.shutdown();
 		
@@ -65,7 +46,9 @@ public class QuickSortSample {
 		}
 	}
 	
-	static class QuickSortWorker implements Callable<int[]>{
+	static class QuickSortWorker extends RecursiveTask<int[]>{
+		private static final long serialVersionUID = 3772193021134281020L;
+		private static final long THRESHOLD = 1000;
 		int[] arrayToBeSorted;
 
 		/**
@@ -104,14 +87,53 @@ public class QuickSortSample {
 				quickSort(array, i, right);
 			}
 		}
+		
+		public <T> int[] concatenate (int[] aLeftResult, int[] aRightResult) {
+		    int aLen = aLeftResult.length;
+		    int bLen = aRightResult.length;
+		    int[] C = (int[]) Array.newInstance(aLeftResult.getClass().getComponentType(), aLen+bLen);
+		    System.arraycopy(aLeftResult, 0, C, 0, aLen);
+		    System.arraycopy(aRightResult, 0, C, aLen, bLen);
+
+		    return C;
+		}
 
 		/* (non-Javadoc)
-		 * @see java.util.concurrent.Callable#call()
+		 * @see java.util.concurrent.RecursiveTask#compute()
 		 */
 		@Override
-		public int[] call() throws Exception {
-			quickSort(arrayToBeSorted, 0, arrayToBeSorted.length - 1);
-			return arrayToBeSorted;
+		protected int[] compute() {
+			int[] combinedResult = null;
+			if(arrayToBeSorted.length>THRESHOLD){
+				int[] leftArray = Arrays.copyOfRange(arrayToBeSorted, 0, arrayToBeSorted.length/2);
+				int[] rightArray = Arrays.copyOfRange(arrayToBeSorted, arrayToBeSorted.length/2, arrayToBeSorted.length);
+				QuickSortWorker left = new QuickSortWorker(leftArray);
+				QuickSortWorker right = new QuickSortWorker(rightArray);
+				invokeAll(left, right);
+				int[] leftResult;
+				try {
+					leftResult = left.get();
+					int[] rightResult = right.get();
+					if(leftResult[leftResult.length-1]>rightResult[rightResult.length-1]){
+						combinedResult = concatenate(leftResult,rightResult);
+					}
+					else
+					{
+						combinedResult = concatenate(rightResult,leftResult);
+					}
+				} catch (InterruptedException anEx) {
+					// TODO Auto-generated catch block
+					anEx.printStackTrace();
+				} catch (ExecutionException anEx) {
+					// TODO Auto-generated catch block
+					anEx.printStackTrace();
+				}
+			}
+			else{
+				quickSort(arrayToBeSorted, 0, arrayToBeSorted.length - 1);
+				combinedResult = arrayToBeSorted;
+			}
+			return combinedResult;
 		}
 	}
 }
