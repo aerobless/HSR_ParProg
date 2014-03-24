@@ -1,6 +1,9 @@
 // Parallel Programming Course, L. Bläser
 using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace srcEx06
 {
@@ -17,6 +20,8 @@ namespace srcEx06
 			var matrixB = _CreateRandomMatrix (random, K, M);
 			var watch = Stopwatch.StartNew ();
 			var matrixC = ParallelMatrixMultiplication.Multiply (matrixA, matrixB);
+
+
 			Console.WriteLine ("Total computing time: {0} ms", watch.ElapsedMilliseconds);
 			_CheckCorrectness (matrixA, matrixB, matrixC);
 		}
@@ -24,11 +29,11 @@ namespace srcEx06
 		private static long[,] _CreateRandomMatrix (Random random, long len1, long len2)
 		{
 			var matrix = new long[len1, len2];
-			for (int i = 0; i < len1; i++) {
+			Parallel.For (0, len1, i => {
 				for (int j = 0; j < len2; j++) {
 					matrix [i, j] = random.Next () * random.Next ();
 				}
-			}
+			});
 			return matrix;
 		}
 
