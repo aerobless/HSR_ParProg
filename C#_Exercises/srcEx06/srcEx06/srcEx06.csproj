@@ -72,10 +72,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Exercise_01\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Mono\MonoMac\v0.0\Mono.MonoMac.targets" />
+  <ItemGroup>
+    <Compile Include="MainClass.cs" />
+    <Compile Include="Exercise_01\Program_01.cs">
+      <DependentUpon>ParallelMatrixMultiplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exercise_01\ParallelMatrixMultiplication.cs" />
+  </ItemGroup>
 </Project>
