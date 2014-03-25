@@ -1,0 +1,24 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="srcEx06/Exercise_01/Program_01.cs">
+    <Files>
+      <File FileName="srcEx06/MainClass.cs" Line="12" Column="4" />
+      <File FileName="srcEx06/Exercise_01/Program_01.cs" Line="32" Column="1" />
+      <File FileName="srcEx06/Exercise_01/ParallelMatrixMultiplication.cs" Line="13" Column="37" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="srcEx06" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
+            <Node name="Exercise_01" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

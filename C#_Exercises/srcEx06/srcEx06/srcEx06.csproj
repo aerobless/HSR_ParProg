@@ -11,6 +11,7 @@
     <RootNamespace>srcEx06</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyName>srcEx06</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,10 @@
     <CodeSigningKey>Mac Developer</CodeSigningKey>
     <EnableCodeSigning>false</EnableCodeSigning>
     <CreatePackage>false</CreatePackage>
+    <PackageSigningKey>Developer ID Installer</PackageSigningKey>
+    <I18n />
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>
@@ -44,6 +49,8 @@
     <CodeSigningKey>Developer ID Application</CodeSigningKey>
     <EnableCodeSigning>true</EnableCodeSigning>
     <EnablePackageSigning>false</EnablePackageSigning>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|x86' ">
     <DebugType>full</DebugType>
@@ -61,14 +68,22 @@
     <CodeSigningKey>3rd Party Mac Developer Application</CodeSigningKey>
     <EnableCodeSigning>true</EnableCodeSigning>
     <EnablePackageSigning>true</EnablePackageSigning>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="MonoMac" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -85,5 +100,39 @@
       <DependentUpon>ParallelMatrixMultiplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Exercise_01\ParallelMatrixMultiplication.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
+    <NativeReference Include="..\..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\3.2.0\lib\mono\4.5\mscorlib.dll">
+      <IsCxx>False</IsCxx>
+      <Kind>Static</Kind>
+    </NativeReference>
   </ItemGroup>
 </Project>
