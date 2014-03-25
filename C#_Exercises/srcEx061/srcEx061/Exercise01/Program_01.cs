@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace srcEx06
+namespace srcEx061
 {
 	public class Program_01
 	{

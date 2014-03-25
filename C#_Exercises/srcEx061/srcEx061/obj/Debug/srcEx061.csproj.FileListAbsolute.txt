@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx061\srcEx061\bin\Debug\srcEx061.exe.config
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx061\srcEx061\bin\Debug\srcEx061.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx061\srcEx061\bin\Debug\srcEx061.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx061\srcEx061\obj\Debug\srcEx061.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx061\srcEx061\obj\Debug\srcEx061.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx061\srcEx061\obj\Debug\srcEx061.pdb
