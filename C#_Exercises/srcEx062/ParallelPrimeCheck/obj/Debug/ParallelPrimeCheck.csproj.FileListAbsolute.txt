@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\Aufgabe2\ParallelPrimeCheck\ParallelPrimeCheck\bin\Debug\ParallelPrimeCheck.exe.config
+C:\Users\Administrator\Desktop\Aufgabe2\ParallelPrimeCheck\ParallelPrimeCheck\bin\Debug\ParallelPrimeCheck.exe
+C:\Users\Administrator\Desktop\Aufgabe2\ParallelPrimeCheck\ParallelPrimeCheck\bin\Debug\ParallelPrimeCheck.pdb
+C:\Users\Administrator\Desktop\Aufgabe2\ParallelPrimeCheck\ParallelPrimeCheck\obj\Debug\ParallelPrimeCheck.exe
+C:\Users\Administrator\Desktop\Aufgabe2\ParallelPrimeCheck\ParallelPrimeCheck\obj\Debug\ParallelPrimeCheck.pdb
+C:\Users\Administrator\Desktop\Aufgabe2\ParallelPrimeCheck\ParallelPrimeCheck\obj\Debug\ParallelPrimeCheck.csprojResolveAssemblyReference.cache
