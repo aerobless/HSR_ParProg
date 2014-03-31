@@ -3,6 +3,8 @@ package exercise01;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -13,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class SuperComputerGUI extends JPanel implements ActionListener {
+public class SuperComputerGUI extends JPanel implements ActionListener, Observer {
 	private static final long serialVersionUID = 4998293627753886206L;
 	private JLabel statusLabel;
 	private JLabel resultLabel;
@@ -36,7 +38,9 @@ public class SuperComputerGUI extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		theSupercomputer.addObserver(this);
 	    new Thread(() -> {
+	    	
 	    	String result = theSupercomputer.calculateUltimateAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();	
 	    	SwingUtilities.invokeLater(() -> {
 	    		resultLabel.setText("Result: " + result);
@@ -84,5 +88,15 @@ public class SuperComputerGUI extends JPanel implements ActionListener {
 				createAndShowGUI(theSupercomputer);
 			}
 		});
+	}
+
+	/* (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
+	@Override
+	public void update(Observable aO, Object aArg) {
+		if(aArg != null){ //Not sure if there's a better way to prevent getting a null value
+			statusLabel.setText(aArg.toString());
+		}
 	}
 }

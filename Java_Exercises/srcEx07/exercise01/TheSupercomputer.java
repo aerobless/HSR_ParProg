@@ -64,7 +64,7 @@ public class TheSupercomputer extends Observable {
 			dotsCount %= ITERATIONS;
 			dotsCount++;
 			setChanged();
-			notifyObservers();
+			notifyObservers(status);
 		}
 	}
 
