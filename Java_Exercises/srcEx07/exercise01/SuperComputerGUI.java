@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class SuperComputerGUI extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 4998293627753886206L;
@@ -35,8 +36,12 @@ public class SuperComputerGUI extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String result = theSupercomputer.calculateUltimateAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();
-		resultLabel.setText("Result: " + result);
+	    new Thread(() -> {
+	    	String result = theSupercomputer.calculateUltimateAnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything();	
+	    	SwingUtilities.invokeLater(() -> {
+	    		resultLabel.setText("Result: " + result);
+	      });
+	  }).start();
 	}
 
 	private void addStartButton() {
