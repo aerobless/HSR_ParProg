@@ -13,7 +13,8 @@ namespace Peterson {
         /*
          * For .Net "volatile" is not enough, it only prevents optimization and 
          * guarantees visibility, but it doesn't prevent re-ordering when used alone.
-         * To prevent re-ordering we have to use "Thread.MemoryBarrier()"
+         * To prevent re-ordering we have to use "Thread.MemoryBarrier()" that acts, 
+         * as it's name says, as a barrier.
          */
       Thread.MemoryBarrier();
       while (turn == 1 && state1) ;
