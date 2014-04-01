@@ -1,138 +1,136 @@
 ﻿// Course "Efficient concurrent programming in .NET", Luc Bläser
-
 using System;
 using System.Windows;
-using System.Threading;
-using System.Collections.Concurrent;
-using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace TestUIThread {
-  public partial class MainWindow : Window {
-    BackgroundWorker bw = new BackgroundWorker();
-
-    public MainWindow() {
-      InitializeComponent();
-      numberTextBox.Text = "20000000000000003";
-
-      bw.WorkerReportsProgress = true;
-      bw.WorkerSupportsCancellation = true;
-      bw.DoWork += new DoWorkEventHandler(bw_DoWork);
-     // bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
-     // bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
-    }
-
-    private void bw_DoWork(object sender, DoWorkEventArgs e)
+namespace TestUIThread
+{
+    public partial class MainWindow : Window
     {
-        BackgroundWorker worker = sender as BackgroundWorker;
-        int partitions = 100;
-        long number = 20000000000000003;
-        bool singleResult = false;
-        long[] splitter = new long[partitions];
-        for (int i2 = 0; i2 < partitions; i2++)
+        private BackgroundWorker bw = new BackgroundWorker();
+
+        public MainWindow()
         {
-            if (i2 == 0)
+            InitializeComponent();
+            numberTextBox.Text = "20000000000000003";
+
+            bw.WorkerReportsProgress = true;
+            bw.WorkerSupportsCancellation = true;
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+        }
+
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if ((e.Cancelled == true))
             {
-                splitter[i2] = number / partitions;
+                this.calculationResultLabel.Content = "Canceled!";
             }
+
+            else if (!(e.Error == null))
+            {
+                this.calculationResultLabel.Content = ("Error: " + e.Error.Message);
+            }
+
             else
             {
-                splitter[i2] = splitter[i2 - 1] + (number / partitions);
+                this.calculationResultLabel.Content = "Done! "+e.Result;
             }
+            startCalculationButton.Content = "Start";
+        }
 
-            for (int i = 1; (i <= partitions); i++)
-            {
-                if ((worker.CancellationPending == true))
+        private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.calculationResultLabel.Content = (e.ProgressPercentage.ToString() + "%");
+        }
+
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+                bool isPrime = true;
+                long number = (long)e.Argument;
+                long[] partitions = _PartitionNumber(number, 100);
+                for (int i = 0; i < partitions.Length-1; i++)
                 {
-                    e.Cancel = true;
-                    break;
+                     if ((worker.CancellationPending == true))
+                         {
+                            e.Cancel = true;
+                            break;
+                        }
+                     else
+                     {
+                        //Slow down
+                        System.Threading.Thread.Sleep(100);
+                        if (!_IsPrime(partitions[i], partitions[i+1], number))
+                        {
+                            isPrime = false;
+                        }
+                        worker.ReportProgress((i));
+                     }
+                }
+                if (isPrime)
+                {
+                    Console.WriteLine("Prime");
+                    e.Result = "Prime";
                 }
                 else
                 {
-                    //todo: 
-                    _ParallelForCheckPrimesPartitioned(splitter[i]);
-                    worker.ReportProgress((i * 10));
+                    Console.WriteLine("NOT Prime");
+                    e.Result = "NOT Prime";
                 }
-            }
         }
-    }
 
-    private void startCalculationButton_Click(object sender, RoutedEventArgs e) {
-      calculationResultLabel.Content = "(computing)";
-      long number;
-      if (bw.IsBusy != true)
-      {
-          bw.RunWorkerAsync();
-      if (long.TryParse(numberTextBox.Text, out number))
-      {
-          new Thread(() =>
-          {
-              String result = "";
-              {
-                  if (_ParallelForCheckPrimesPartitioned(number))
-                  {
-                      result = "Prime";
-                  }
-                  else
-                  {
-                      result = "No prime";
-                  }
-              }
-
-              Dispatcher.BeginInvoke(new ThreadStart(() =>
-              {
-                  calculationResultLabel.Content = result;
-              }));
-          }).Start();
-      }
-      }
-    }
-
-    public static bool _ParallelForCheckPrimesPartitioned(long number)
-    {
-        int partitions = 2;
-        bool singleResult = false;
-        bool[] result = new bool[partitions];
-        long[] splitter = new long[partitions];
-        for (int i = 0; i < partitions; i++)
+        private void startCalculationButton_Click(object sender, RoutedEventArgs e)
         {
-            if(i==0){
-             splitter[i] = number/partitions;
-            }
-            else{
-             splitter[i] = splitter[i-1]+(number/partitions);
-          }
-        }
-        Parallel.ForEach(Partitioner.Create(0, splitter.Length), (range, _) =>
+            long number;
+            if (long.TryParse(numberTextBox.Text, out number))
+            if (bw.IsBusy != true)
             {
-                for (int i = range.Item1; i < range.Item2; i++)
+                startCalculationButton.Content = "Cancel";
+                bw.RunWorkerAsync(number);
+            }
+            else
+            {
+                startCalculationButton.Content = "Start";
+                bw.CancelAsync();
+            }
+        }
+
+        private long[] _PartitionNumber(long number, int partitionCount)
+        {
+            long[] partitions = new long[partitionCount];
+            for (int i = 0; i < partitionCount; i++)
+            {
+                if (i == 0)
                 {
-                    Console.WriteLine("Status " + i);
-                    if (i == 0)
-                    {
-                        result[i] = _IsPrime(2, splitter[i], number);
-                        if (result[i] == true) {
-                            singleResult = true;
-                        }
-                    }
-                    else
-                    {
-                        result[i] = _IsPrime(splitter[i-1], splitter[i], number);
-                    }
+                    partitions[i] = 2;
                 }
-            });
-        return singleResult;
-    }
-
-    private static bool _IsPrime(long start, long end, long number) {
-        for (long i = start; i <= Math.Sqrt(end); i++)
-        {
-            if (number % i == 0)
-            {
-          return false;
+                else if (i == partitionCount-1)
+                {
+                    partitions[i] = number-1;
+                    Console.WriteLine("YAY "+partitions[i]);
+                }
+                else 
+                {
+                    partitions[i] = partitions[i - 1] + (number / partitionCount);
+                }
+            }
+           return partitions;
         }
-      }
-      return true;
+
+        private bool _IsPrime(long start, long end, long number)
+        {
+            for (long i = start; i <= Math.Sqrt(end); i++)
+            {
+                if (number % i == 0)
+                {
+                    Console.WriteLine(start + " " + end + " " + number);
+                    return false;
+                }
+            }
+            return true;
+        }
     }
-  }
 }
+
