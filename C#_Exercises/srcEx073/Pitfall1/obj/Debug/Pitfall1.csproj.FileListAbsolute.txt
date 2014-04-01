@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall1\bin\Debug\Pitfall1.exe.config
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall1\bin\Debug\Pitfall1.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall1\bin\Debug\Pitfall1.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall1\obj\Debug\Pitfall1.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall1\obj\Debug\Pitfall1.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall1\obj\Debug\Pitfall1.pdb

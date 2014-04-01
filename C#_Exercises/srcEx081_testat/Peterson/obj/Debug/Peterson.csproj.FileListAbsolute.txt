@@ -4,3 +4,9 @@ C:\Daten\Parallele_Programmierung\Übungen\08_Memory_Models\05_Vorlagen\Aufgabe1
 C:\Daten\Parallele_Programmierung\Übungen\08_Memory_Models\05_Vorlagen\Aufgabe1\DotNet\Peterson\Peterson\obj\Debug\Peterson.csprojResolveAssemblyReference.cache
 C:\Daten\Parallele_Programmierung\Übungen\08_Memory_Models\05_Vorlagen\Aufgabe1\DotNet\Peterson\Peterson\obj\Debug\Peterson.exe
 C:\Daten\Parallele_Programmierung\Übungen\08_Memory_Models\05_Vorlagen\Aufgabe1\DotNet\Peterson\Peterson\obj\Debug\Peterson.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx081_testat\Peterson\bin\Debug\Peterson.exe.config
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx081_testat\Peterson\obj\Debug\Peterson.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx081_testat\Peterson\obj\Debug\Peterson.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx081_testat\Peterson\bin\Debug\Peterson.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx081_testat\Peterson\bin\Debug\Peterson.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx081_testat\Peterson\obj\Debug\Peterson.csprojResolveAssemblyReference.cache

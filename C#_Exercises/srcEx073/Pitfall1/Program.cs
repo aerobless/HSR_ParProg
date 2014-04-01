@@ -10,6 +10,7 @@ namespace Pitfall1 {
       Task<bool> task = IsPrimeAsync(10000000000000061L);
       Console.WriteLine("Other work");
       Console.WriteLine("Result {0}", task.Result);
+
     }
 
     public static async Task<bool> IsPrimeAsync(long number) {

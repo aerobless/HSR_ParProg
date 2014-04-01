@@ -1,0 +1,13 @@
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\bin\Debug\Demo2-AsyncDownloadGUI.exe.config
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\bin\Debug\Demo2-AsyncDownloadGUI.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\bin\Debug\Demo2-AsyncDownloadGUI.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Pitfall3.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\DownloadWindow.baml
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\DownloadWindow.g.cs
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\App.g.cs
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Demo2-AsyncDownloadGUI_MarkupCompile.cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Demo2-AsyncDownloadGUI.g.resources
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Demo2_AsyncDownloadGUI.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Pitfall3.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Demo2-AsyncDownloadGUI.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall3\obj\Debug\Demo2-AsyncDownloadGUI.pdb

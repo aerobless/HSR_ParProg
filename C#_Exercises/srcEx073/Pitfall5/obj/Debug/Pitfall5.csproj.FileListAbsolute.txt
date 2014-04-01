@@ -1,0 +1,13 @@
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\bin\Debug\Pitfall5.exe.config
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\bin\Debug\Pitfall5.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\bin\Debug\Pitfall5.pdb
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\MainWindow.baml
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\MainWindow.g.cs
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\App.g.cs
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5_MarkupCompile.cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5.g.resources
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5.exe
+C:\Users\Administrator\Desktop\Github\ParProg\C#_Exercises\srcEx073\Pitfall5\obj\Debug\Pitfall5.pdb
