@@ -4,25 +4,25 @@ public class PetersonTest {
   private static int counter;
   
   public static void main(String[] args) throws InterruptedException {
-    final int NofRounds = 100000;
+    final int NofRounds = 10000000;
     final PetersonMutex mutex = new PetersonMutex();
     counter = 0;
     
     Thread t0 = new Thread() {
       public void run() {
         for (int i = 0; i < NofRounds; i++) {
-          mutex.thread0Lock();
-          counter++;
-          mutex.thread0Unlock();
+        	mutex.thread0Lock();
+        	counter++;
+        	mutex.thread0Unlock();
         }
       }
     };
     Thread t1 = new Thread() {
       public void run() {
         for (int i = 0; i < NofRounds; i++) {
-          mutex.thread1Lock();
-          counter--;
-          mutex.thread1Unlock();
+        	mutex.thread1Lock();
+        	counter--;
+        	mutex.thread1Unlock();
         }
       }
     };
@@ -36,3 +36,4 @@ public class PetersonTest {
     System.out.println("Completed");
   }
 }
+
