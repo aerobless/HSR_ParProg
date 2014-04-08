@@ -2,9 +2,8 @@ package exercise01;
 
 public class PetersonMutex {
 	/*
-	 * 1a: The CPU or JVM can re-order the operations and then
-	 * they're no always called in the same order, which leads to a
-	 * "Wrong synchronisation".
+	 * 1a: Without "synchronized" or "volatile" there's no synchronization between
+	 * threads because each thread has it's own cache of the variables.
 	 */
 	
 	/* 
