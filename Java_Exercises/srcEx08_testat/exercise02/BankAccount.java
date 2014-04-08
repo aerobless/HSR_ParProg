@@ -1,22 +1,26 @@
 package exercise02;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class BankAccount {
-	private int balance = 0;
+	private AtomicInteger balance = new AtomicInteger();
 
-	public synchronized void deposit(int amount) {
-		balance += amount;
+	public void deposit(int amount) {
+		balance.addAndGet(amount);
 	}
 
-	public synchronized boolean withdraw(int amount) {
-		if (amount <= this.balance) {
-			balance -= amount;
-			return true;
-		} else {
-			return false;
+	public boolean withdraw(int amount) {
+		int sealedBalance = balance.get();
+		while(!(balance.compareAndSet(sealedBalance, sealedBalance-amount))){
+			sealedBalance = balance.get();
+			if(sealedBalance<=amount){
+				return false;
+			}
 		}
+		return true;
 	}
 
-	public synchronized int getBalance() {
-		return balance;
+	public int getBalance() {
+		return balance.get();
 	}
 }
