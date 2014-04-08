@@ -1,15 +1,14 @@
 package exercise03;
 
 import java.util.concurrent.atomic.AtomicReference;
-
 // TODO: Implement lock-free stack
 public class LockFreeStack<T> implements Stack<T> {
 	AtomicReference<Node<T>> top = new AtomicReference<>();
 	
   // TODO: Design stack node class
 	private static class Node <E>{
-		public final E item;
-		public Node<E> next;
+		private final E item;
+		private Node<E> next;
 		
 		public Node(E item) {
 			this.item = item;
@@ -17,6 +16,14 @@ public class LockFreeStack<T> implements Stack<T> {
 		
 		public void setNext(Node<E> item){
 			next = item;
+		}
+		
+		public Node<E> getNext(){
+			return next;
+		}
+		
+		public E getItem(){
+			return item;
 		}
 	}
   
@@ -32,8 +39,15 @@ public class LockFreeStack<T> implements Stack<T> {
   
   public T pop() {
     // TODO: Implement lock-free push operation
-    throw new RuntimeException("not implemented");
+	  Node<T> newNode;
+	  Node<T> current;
+	  do{
+		  current = top.get();
+		  if(current == null){
+			  return null; 
+		  }
+		  newNode = current.getNext();
+	  } while(!top.compareAndSet(current, newNode));
+	  return current.getItem();
   }
-  
-  
 }
