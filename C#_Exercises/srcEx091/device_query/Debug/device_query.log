@@ -1,0 +1,24 @@
+﻿Build started 15.04.2014 08:13:32.
+     1>Project "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\device_query\device_query.vcxproj" on node 2 (Build target(s)).
+     1>CudaBuild:
+         Compiling CUDA source file device_query.cu...
+         cmd.exe /C "C:\Users\twinter\AppData\Local\Temp\tmp75baddb96a6f48c5bb671f55f4c52071.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\device_query.cu.obj "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\device_query\device_query.cu"
+         
+         C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\device_query>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\device_query.cu.obj "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\device_query\device_query.cu" 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\device_query.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\device_query.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\device_query.lib" /MACHINE:X86 Debug\device_query.cu.obj
+         device_query.vcxproj -> C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\device_query.exe
+       PostBuildEvent:
+         echo copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\"
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\"
+         :VCEnd
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\Debug\"
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart32_55.dll
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart64_55.dll
+                 2 file(s) copied.
+     1>Done Building Project "C:\09_GPU-Parallelisierung_1\09_Vorlagen\Aufgabe1\device_query\device_query\device_query.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.10
