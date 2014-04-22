@@ -31,23 +31,33 @@ public class LockFreeStack<T> implements Stack<T> {
     // TODO: Implement lock-free push operation
 	  Node<T> newNode = new Node<>(value);
 	  Node<T> current;
-	  do{
-		  current = top.get();
-		  newNode.setNext(current);
-	  } while (!top.compareAndSet(current, newNode));
-  }
+	  boolean success;
+	  do {
+	        current = top.get();
+	        newNode.setNext(current);
+	        success = top.compareAndSet(current, newNode);
+	        if (!success) {
+	                Thread.yield();
+	        }
+		} while (!success);
+	  }
   
   public T pop() {
     // TODO: Implement lock-free push operation
 	  Node<T> newNode;
 	  Node<T> current;
+	  boolean success;
 	  do{
 		  current = top.get();
 		  if(current == null){
 			  return null; 
 		  }
 		  newNode = current.getNext();
-	  } while(!top.compareAndSet(current, newNode));
+		  success = top.compareAndSet(current, newNode);
+	      if (!success) {
+                Thread.yield();
+	      }
+	  } while(!success);
 	  return current.getItem();
   }
 }
