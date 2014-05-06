@@ -50,6 +50,7 @@ public class WorkerManager extends UntypedActor {
 	private final Map<ActorRef /* Worker */, ActorRef /* Sender */> working = new HashMap<>();
 
 	public WorkerManager(int numberOfWorkers) {
+		//getContext().actorOf(Props.create(Worker.class).withDispatcher("pinned-dispatcher"));
 		ActorSystem system = ActorSystem.create("workActors");
 		for (int i = 0; i < numberOfWorkers; i++) {
 			// TODO Worker Actors erstellen und in der idle Queue einreihen.
