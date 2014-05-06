@@ -12,6 +12,7 @@ import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
 import akka.actor.ActorRef;
 import akka.util.Timeout;
+import exercise03.Messages.IncomingMessage;
 import exercise03.Messages.Join;
 
 /**
@@ -42,12 +43,15 @@ public class EventSocket extends WebSocketAdapter {
 	@Override
 	public void onWebSocketText(String message) {
 		super.onWebSocketText(message);
+		actor.tell(new IncomingMessage(message) , actor);
+
 		// TODO Nachricht an actor senden.
 	}
 
 	@Override
 	public void onWebSocketClose(int statusCode, String reason) {
 		super.onWebSocketClose(statusCode, reason);
+	
 		//TODO Quit an actor senden.
 	}
 }

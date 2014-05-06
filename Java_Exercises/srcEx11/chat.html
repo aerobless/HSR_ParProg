@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WebSocket Chat</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script>
+            var ws = new WebSocket("ws://localhost:8080/events/");
+            
+            ws.onopen = function(){
+            };
+            
+            ws.onmessage = function(message){            
+                var chatlog = document.getElementById('chatlog');
+                chatlog.textContent += message.data + "\n";
+				chatlog.scrollTop = chatlog.scrollHeight;
+            };
+            
+            function postToServer(){
+                ws.send(document.getElementById("msg").value);
+                document.getElementById("msg").value = "";
+                return false;
+            }
+            
+            function closeConnect(){
+                ws.close();
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Websocket Chat</h1>
+        <p class="lead">Open another browser and start chatting!</p>
+        
+		<div class="form-group">
+			<textarea id="chatlog" rows="8" class="form-control" readonly></textarea>
+		</div>
+                
+        <form class="form-inline" role="form">		  
+			<div class="form-group">
+				<input id="msg" type="text"  class="form-control" placeholder="Enter your message...">
+			</div>
+
+	        <button type="submit" id="sendButton" onClick="return postToServer();">Chat</button>
+	        <button type="submit" id="sendButton" onClick="return closeConnect();">Bye</button>
+		</form>
+      </div>
+    </div>
+    </body>
+</html>
