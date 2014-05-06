@@ -14,6 +14,7 @@ import akka.actor.ActorRef;
 import akka.util.Timeout;
 import exercise03.Messages.IncomingMessage;
 import exercise03.Messages.Join;
+import exercise03.Messages.Quit;
 
 /**
  * Der EventSocket übersetzt die eingehenden Events des Sockets in Nachrichten
@@ -52,7 +53,7 @@ public class EventSocket extends WebSocketAdapter {
 	@Override
 	public void onWebSocketClose(int statusCode, String reason) {
 		super.onWebSocketClose(statusCode, reason);
-	
+		actor.tell(new Quit(), actor);
 		//TODO Quit an actor senden.
 	}
 }

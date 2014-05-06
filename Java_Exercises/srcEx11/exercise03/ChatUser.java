@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.jetty.websocket.api.Session;
 
+import akka.actor.ActorRef;
 import akka.actor.ActorSelection;
 import akka.actor.PoisonPill;
 import akka.actor.UntypedActor;
@@ -38,8 +39,9 @@ public class ChatUser extends UntypedActor {
 	 */
 	private void handleQuit() {
 		ActorSelection selection = getChatUsers();
-		selection.tell((new OutgoingMessage("QUIT")), getSelf());
+		selection.tell((new OutgoingMessage("QUIT")), ActorRef.noSender());
 		getSelf().tell(PoisonPill.getInstance(), getSelf());
+		System.out.println("dead");
 	}
 
 	/**
