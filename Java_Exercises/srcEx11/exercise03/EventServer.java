@@ -34,7 +34,7 @@ public class EventServer {
 		handlers.setHandlers(new Handler[] { resourceHandler, context });
 
 		server.setHandler(handlers);
-
+	
 		// Add a websocket to a specific path spec
 		ServletHolder holderEvents = new ServletHolder("ws-events",
 				EventServlet.class);

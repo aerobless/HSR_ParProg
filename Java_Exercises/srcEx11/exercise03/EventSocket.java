@@ -42,6 +42,7 @@ public class EventSocket extends WebSocketAdapter {
 
 	@Override
 	public void onWebSocketText(String message) {
+
 		super.onWebSocketText(message);
 		actor.tell(new IncomingMessage(message) , actor);
 

@@ -18,15 +18,15 @@
 	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/config-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/scala-library.jar"/>
 	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/javax.servlet-api-3.1.0.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jetty-util-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jetty-servlet-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jetty-server-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jetty-security-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jetty-io-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jetty-http-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/websocket-servlet-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/websocket-server-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/websocket-common-9.1.0.v20131115.jar"/>
-	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/websocket-api-9.1.0.v20131115.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/websocket-servlet-9.2.0.M0.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/websocket-server-9.2.0.M0.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/websocket-common-9.2.0.M0.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/websocket-api-9.2.0.M0.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-util-9.1.5.v20140505.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-servlet-9.1.5.v20140505.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-server-9.1.5.v20140505.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-security-9.1.5.v20140505.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-io-9.1.5.v20140505.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-http-9.1.5.v20140505.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

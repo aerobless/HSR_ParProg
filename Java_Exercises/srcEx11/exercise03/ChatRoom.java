@@ -43,5 +43,6 @@ public class ChatRoom extends UntypedActor {
 		ActorRef userActor = getContext().actorOf(
 				Props.create(ChatUser.class, join.session));
 		getSender().tell(userActor, getSelf());
+		System.out.println("here");
 	}
 }
