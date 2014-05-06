@@ -27,7 +27,7 @@ public class EventServer {
 		context.setContextPath("/");
 
 		ResourceHandler resourceHandler = new ResourceHandler();
-		resourceHandler.setWelcomeFiles(new String[] { "chat.html" });
+		resourceHandler.setWelcomeFiles(new String[] { "srcEx11/exercise03/chat.html" });
 		resourceHandler.setResourceBase(".");
 
 		HandlerList handlers = new HandlerList();

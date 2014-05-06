@@ -39,7 +39,7 @@ public class ChatUser extends UntypedActor {
 	 */
 	private void handleQuit() {
 		ActorSelection selection = getChatUsers();
-		selection.tell((new OutgoingMessage("QUIT")), ActorRef.noSender());
+		selection.tell((new OutgoingMessage("User quit...")), ActorRef.noSender());
 		getSelf().tell(PoisonPill.getInstance(), getSelf());
 		System.out.println("dead");
 	}
