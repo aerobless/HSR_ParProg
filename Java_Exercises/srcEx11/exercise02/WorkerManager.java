@@ -7,7 +7,9 @@ import java.util.Map;
 
 import scala.concurrent.duration.Duration;
 import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
 import akka.actor.OneForOneStrategy;
+import akka.actor.Props;
 import akka.actor.SupervisorStrategy;
 import akka.actor.SupervisorStrategy.Directive;
 import akka.actor.UntypedActor;
@@ -48,22 +50,43 @@ public class WorkerManager extends UntypedActor {
 	private final Map<ActorRef /* Worker */, ActorRef /* Sender */> working = new HashMap<>();
 
 	public WorkerManager(int numberOfWorkers) {
+		ActorSystem system = ActorSystem.create("workActors");
 		for (int i = 0; i < numberOfWorkers; i++) {
 			// TODO Worker Actors erstellen und in der idle Queue einreihen.
+			ActorRef worker = system.actorOf(Props.create(Worker.class), "Worker"+i);
+			idle.add(worker);			
 		}
 	}
 
+	/**
+	 * The results of this experiment can be seen in
+	 * the visual jvm. It is available by entering:
+	 * 
+	 * 'jvisualvm' into Bash on OS X
+	 * 
+	 */
+	
 	public void onReceive(Object message) {
 		if (message instanceof Schedule && idle.isEmpty()) {
 			// TODO Es sind leider keine Worker verfügbar, das melden wir dem
 			// Sender zurück
+			getSender().tell("No workers available.", getSelf());
+			System.out.println("NO WORKER AVAILABLE");
 
 		} else if (message instanceof Schedule) {
 			// TODO Der nächste freie Worker soll die Arbeit erledigen.
+			ActorRef worker = idle.remove();
+			
+			worker.tell(((Schedule) message).getWork(), getSelf());
+			working.put(worker, getSender());
+			System.out.println("SCHEDULED WORK");
 
 		} else if (message instanceof WorkItemResult) {
 			// TODO Die Arbeit wurde erledigt. Wir melden dem ursprünglichen
 			// Auftrageber das Resultat zurück
+			idle.add(getSender());
+			working.get(getSender()).tell(((WorkItemResult) message).getValue(), getSelf());
+			System.out.println("WORK RESULT");
 		}
 	}
 

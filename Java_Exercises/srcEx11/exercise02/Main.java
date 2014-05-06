@@ -27,7 +27,6 @@ public class Main {
 			// Der Calculator soll ein neues WorkItem schedulen
 			calculator.tell(new Calculator.Calculate(), ActorRef.noSender());
 		}
-
 		system.shutdown();
 	}
 }
