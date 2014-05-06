@@ -7,7 +7,15 @@
 	<classpathentry kind="src" path="srcEx05"/>
 	<classpathentry kind="src" path="srcEx07"/>
 	<classpathentry kind="src" path="srcEx08_testat"/>
+	<classpathentry kind="src" path="srcEx11"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/akka-actor_2.10.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://doc.akka.io/japi/akka/2.3.2/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/config-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/scala-library.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
