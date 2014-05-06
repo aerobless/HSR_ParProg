@@ -48,15 +48,19 @@ public class PingPong {
 				Thread.sleep((long) (Math.random() * 1000) + 300);
 			} catch (InterruptedException e) {
 			}
-			// TODO Zähler erhöhen und dem Sender zurückschicken
+			// Increase the counter and return a message to the sender.
 			Ping ping = new Ping(msg.count+1);
 			getSender().tell(ping, getSelf());
+			if(msg.count==9){
+				//getContext().system().shutdown();
+				getContext().stop(getSelf());
+			}
 		}
 
 		private void handleStart(Start message) {
 			System.out.println("Starting...");
+			// Set the counter to zero and send a message to the other actor.
 			Ping ping = new Ping(0);
-			// TODO Zähler auf 0 setzen und dem Sender zurückschicken
 			getSender().tell(ping, getSelf());
 		}
 	}
