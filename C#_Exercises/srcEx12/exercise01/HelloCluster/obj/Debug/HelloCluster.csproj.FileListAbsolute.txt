@@ -1,0 +1,1 @@
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\bin\Debug\HelloCluster.exe.config

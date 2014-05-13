@@ -1,0 +1,7 @@
+10 Cores:
+Pi approximation 3,1416116 versus exact 3,14159265358979
+Total time: 850 ms
+
+24 Cores:
+Pi approximation 3,14218968 versus exact 3,14159265358979
+Total time: 607 ms

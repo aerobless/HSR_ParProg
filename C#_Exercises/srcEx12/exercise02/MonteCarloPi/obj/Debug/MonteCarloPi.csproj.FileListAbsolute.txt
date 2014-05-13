@@ -1,0 +1,7 @@
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\bin\Debug\MonteCarloPi.exe.config
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\bin\Debug\MPI.dll
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\bin\Debug\MonteCarloPi.exe
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\bin\Debug\MonteCarloPi.pdb
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\obj\Debug\MonteCarloPi.csprojResolveAssemblyReference.cache
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\obj\Debug\MonteCarloPi.exe
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe2\MonteCarloPi\obj\Debug\MonteCarloPi.pdb

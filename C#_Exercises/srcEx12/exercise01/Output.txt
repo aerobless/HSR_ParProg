@@ -1,0 +1,10 @@
+Hello cluster from process 7 on NODE06
+Hello cluster from process 8 on NODE06
+Hello cluster from process 4 on NODE06
+Hello cluster from process 3 on NODE06
+Hello cluster from process 1 on NODE06
+Hello cluster from process 9 on NODE06
+Hello cluster from process 6 on NODE06
+Hello cluster from process 0 on NODE06
+Hello cluster from process 2 on NODE06
+Hello cluster from process 5 on NODE06

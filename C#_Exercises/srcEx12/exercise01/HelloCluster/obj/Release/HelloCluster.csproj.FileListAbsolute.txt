@@ -1,0 +1,7 @@
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\bin\Release\HelloCluster.exe.config
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\bin\Release\MPI.dll
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\bin\Release\HelloCluster.exe
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\bin\Release\HelloCluster.pdb
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\obj\Release\HelloCluster.csprojResolveAssemblyReference.cache
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\obj\Release\HelloCluster.exe
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe1\HelloCluster\obj\Release\HelloCluster.pdb

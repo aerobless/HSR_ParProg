@@ -1,0 +1,7 @@
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\bin\Debug\JuliaSet.exe.config
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\bin\Debug\MPI.dll
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\bin\Debug\JuliaSet.exe
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\bin\Debug\JuliaSet.pdb
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\obj\Debug\JuliaSet.csprojResolveAssemblyReference.cache
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\obj\Debug\JuliaSet.exe
+C:\12_Cluster-Parallelisierung_TESTAT3\12_Vorlagen\Aufgabe3\JuliaSet\obj\Debug\JuliaSet.pdb
