@@ -1,36 +1,43 @@
 package exercise01;
 import java.util.Date;
 
+import scala.concurrent.stm.Ref;
+import scala.concurrent.stm.japi.STM;
+
 
 public class Account {
-	// TODO: replace monitor synchronization with software transactions
-	
-	private int balance = 0;
-	private Date lastUpdate = new Date();
+	private Ref.View<Integer> balance = STM.newRef(0);
+	private Ref.View<Date> lastUpdate = STM.newRef(new Date());
 	private boolean isClosed = false;
 	
-	public synchronized void withdraw(int amount) {
-		if (isClosed) {
-			throw new RuntimeException("Closed account");
-		}
-		while (balance < amount) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+	public void withdraw(int amount) {
+		STM.atomic(() -> {
+			if (isClosed) {
+				throw new RuntimeException("Closed account");
 			}
-		}
-		balance -= amount;
-		lastUpdate = new Date();
+			if(balance.get()<amount){
+				STM.retry();
+			}
+			while (balance.get() < amount) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			balance.set(balance.get()-amount);
+			lastUpdate.set(new Date());	
+		});
 	}
 
 	public synchronized void deposit(int amount) {
-		if (isClosed) {
-			throw new RuntimeException("Closed account");
-		}
-		balance += amount;
-		lastUpdate = new Date();
-		notifyAll();
+		STM.atomic(()-> {
+			if (isClosed) {
+				throw new RuntimeException("Closed account");
+			}
+			balance.set(balance.get() + amount);
+			lastUpdate.set(new Date());
+		});
 	}
 
 	public synchronized void setClosed(boolean isClosed) {
@@ -38,16 +45,17 @@ public class Account {
 	}
 
 	public synchronized int getBalance() {
-		return balance;
+		return balance.get();
 	}
 
 	public synchronized Date getLastUpdate() {
-		return lastUpdate;
+		return lastUpdate.get();
 	}
 
 	public static void transfer(Account from, Account to, int amount) {
-		// TODO: make transfer atomic
-		from.withdraw(amount);
-		to.deposit(amount);
+		STM.atomic(() -> {
+			from.withdraw(amount);
+			to.deposit(amount);
+		});
 	}
 }

@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-security-9.1.5.v20140505.jar"/>
 	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-io-9.1.5.v20140505.jar"/>
 	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/jettyweb2/jet/jetty-http-9.1.5.v20140505.jar"/>
+	<classpathentry kind="lib" path="/Users/theowinter/Dropbox/Libraries/scala-stm_2.11-0.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

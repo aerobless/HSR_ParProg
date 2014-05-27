@@ -75,7 +75,6 @@ public class AccountTest extends ConcurrentTest {
 			fail("Account not closed");
 		} catch (RuntimeException e) {
 		}
-		
 		assertEquals("Money lost", account1.getBalance() + account2.getBalance(), amount);
 	}
 }
