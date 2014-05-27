@@ -1,21 +1,30 @@
 package exercise02;
 
-import java.util.concurrent.Semaphore;
+import scala.concurrent.stm.Ref;
+import scala.concurrent.stm.japi.STM;
 
 class Fork {
 	// TODO: Replace semaphore by usage of software transactions
-	private Semaphore semaphore = new Semaphore(1);
+	//private Semaphore semaphore = new Semaphore(1);
+	private Ref.View<Integer> lock = STM.newRef(0);
 	
 	public void acquire() {
-		try {
-			semaphore.acquire();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		STM.atomic(()->{
+			if(lock.get()>1){
+				STM.retry();
+			}
+			lock.set(1);
+		});
 	}
-	
+
 	public void release() {
-		semaphore.release();
+		//semaphore.release();
+		STM.atomic(()->{
+			if(lock.get()<0){
+				STM.retry();
+			}
+			lock.set(0);
+		});
 	}
 }
 
@@ -23,7 +32,6 @@ class PhilosopherThread extends Thread {
 	private final int meals;
 	private final Fork left;
 	private final Fork right;
-	
 	
 	public PhilosopherThread(int meals, Fork left, Fork right) {
 		this.meals = meals;
@@ -75,11 +83,9 @@ public class DiningPhilosophers {
 		for (PhilosopherThread thread : threads) {
 			thread.start();
 		}
-
 		for (PhilosopherThread thread : threads) {
 			thread.join();
 		}
-
 		return System.currentTimeMillis() - start;
 	}
 
