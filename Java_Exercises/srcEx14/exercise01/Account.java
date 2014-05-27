@@ -8,11 +8,11 @@ import scala.concurrent.stm.japi.STM;
 public class Account {
 	private Ref.View<Integer> balance = STM.newRef(0);
 	private Ref.View<Date> lastUpdate = STM.newRef(new Date());
-	private boolean isClosed = false;
+	private Ref.View<Boolean> isClosed = STM.newRef(false);
 	
 	public void withdraw(int amount) {
 		STM.atomic(() -> {
-			if (isClosed) {
+			if (isClosed.get()) {
 				throw new RuntimeException("Closed account");
 			}
 			if(balance.get()<amount){
@@ -30,9 +30,10 @@ public class Account {
 		});
 	}
 
-	public synchronized void deposit(int amount) {
+	public void deposit(int amount) {
 		STM.atomic(()-> {
-			if (isClosed) {
+			if (isClosed.get()) {
+				System.out.println("dd");
 				throw new RuntimeException("Closed account");
 			}
 			balance.set(balance.get() + amount);
@@ -40,15 +41,17 @@ public class Account {
 		});
 	}
 
-	public synchronized void setClosed(boolean isClosed) {
-		this.isClosed = isClosed;
+	public void setClosed(boolean isClosed) {
+		STM.atomic(()-> {
+			this.isClosed.set(isClosed);
+		});
 	}
 
-	public synchronized int getBalance() {
+	public int getBalance() {
 		return balance.get();
 	}
 
-	public synchronized Date getLastUpdate() {
+	public Date getLastUpdate() {
 		return lastUpdate.get();
 	}
 

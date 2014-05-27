@@ -1,0 +1,15 @@
+BEFORE (synchronized, monitor lock)
+Completed: last update Tue May 27 08:19:20 CEST 2014
+Bank accounts : 11
+Total time: 2492ms
+
+AFTER (Scala STM)
+Completed: last update Tue May 27 08:51:04 CEST 2014
+Bank accounts : 11
+Total time: 10647ms
+
+------------------------------------------------------------------------
+the performance is better with STM instead of MonitorLockSynchro.
+------------------------------------------------------------------------
+
+

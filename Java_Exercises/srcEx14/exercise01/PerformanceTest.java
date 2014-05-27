@@ -8,9 +8,7 @@ public class PerformanceTest {
 	private static final int START_BALANCE = 100;
 	
 	public static void main(String[] args) throws InterruptedException {
-		
 		long startTime = System.currentTimeMillis();
-		
 		Bank bank = new Bank();
 		
 		Account mainAccount = bank.openAccount("Main account");
